@@ -10,16 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <style>
         :root {
-            /* --- Modern Pro Theme Colors (Blue/Purple) --- */
+            /* --- Modern Pro Theme Colors --- */
             --font-family: 'Manrope', sans-serif;
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --accent-gradient: linear-gradient(135deg, #00cec9 0%, #81ecec 100%);
             --bg-body: #F4F7FE;
             --white: #ffffff;
             --text-main: #2D3436;
             --text-sub: #A4B0BE;
             --card-shadow: 0 10px 30px rgba(118, 75, 162, 0.08);
-            --card-radius: 24px;
             --primary-color: #764ba2;
         }
 
@@ -35,7 +33,7 @@
 
         #app { max-width: 480px; margin: 0 auto; position: relative; min-height: 100vh; background: #F4F7FE; }
 
-        /* --- New Professional Header --- */
+        /* --- Header --- */
         .profile-header {
             background: var(--primary-gradient);
             padding: 20px 25px 50px;
@@ -60,7 +58,7 @@
         .user-texts h1 { font-size: 1.2rem; font-weight: 700; margin: 0; line-height: 1.2; }
         .user-texts span { font-size: 0.85rem; opacity: 0.9; font-weight: 500; }
 
-        /* Wallet Card Design */
+        /* Wallet Card */
         .wallet-card-overlay {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
@@ -82,7 +80,7 @@
             font-size: 1.2rem;
         }
 
-        /* --- Dashboard Widgets (Home Page) --- */
+        /* --- Dashboard Widgets --- */
         .dashboard-content { padding: 0 20px; margin-top: -35px; position: relative; z-index: 20; }
         
         .stats-grid-pro {
@@ -114,7 +112,6 @@
             margin-bottom: 12px;
         }
         
-        /* Widget specific colors */
         .w-ads .widget-icon { background: rgba(102, 126, 234, 0.1); color: #667eea; }
         .w-refs .widget-icon { background: rgba(0, 184, 148, 0.1); color: #00b894; }
         .w-view .widget-icon { background: rgba(118, 75, 162, 0.1); color: #764ba2; }
@@ -122,9 +119,8 @@
 
         .widget-label { font-size: 0.75rem; color: var(--text-sub); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
         .widget-value { font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin-top: 4px; }
-        .widget-sub { font-size: 0.7rem; color: #00b894; font-weight: 700; margin-top: auto; }
 
-        /* --- Professional Chart --- */
+        /* --- Chart --- */
         .chart-section-pro {
             background: var(--white);
             border-radius: 25px;
@@ -189,12 +185,12 @@
             cursor: pointer; background: var(--primary-gradient); box-shadow: 0 8px 15px rgba(118, 75, 162, 0.3); transition: 0.2s; 
         }
         .action-btn:active { transform: scale(0.95); }
-        .action-btn:disabled { background: #dfe6e9; color: #b2bec3; box-shadow: none; }
+        .action-btn:disabled { background: #dfe6e9; color: #b2bec3; box-shadow: none; cursor: not-allowed; }
 
         /* Navigation */
         .bottom-nav { 
             position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); 
-            display: flex; justify-content: space-around; padding: 18px 0; 
+            display: flex; justify-content: space-around; padding: 15px 0 20px; 
             border-radius: 25px 25px 0 0; box-shadow: 0 -5px 30px rgba(0,0,0,0.05); z-index: 1000; 
             max-width: 480px; margin: 0 auto;
         }
@@ -202,6 +198,9 @@
         .nav-btn i { font-size: 1.3rem; margin-bottom: 2px; }
         .nav-btn.active { color: #764ba2; }
         .nav-btn.active i { transform: translateY(-4px); }
+        
+        .nav-btn.tv-btn i { font-size: 1.4rem; color: #764ba2; }
+        .nav-btn.tv-btn.active i { color: #667eea; }
 
         /* Inputs & Loaders */
         input, select { width: 100%; padding: 14px; border: 1px solid #dfe6e9; border-radius: 12px; margin-top: 5px; background: #fdfdfd; font-family: inherit; }
@@ -215,13 +214,31 @@
         .popup-content { background: var(--white); padding: 30px; border-radius: 24px; width: 85%; max-width: 340px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.15); animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         @keyframes popUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         
-        /* Leaderboard & Wallet Cards */
+        /* Leaderboard */
         .leaderboard-toggle { background: #dfe6e9; padding: 4px; border-radius: 14px; display: flex; margin-bottom: 20px; }
         .toggle-btn { flex: 1; padding: 10px; border: none; background: none; border-radius: 10px; font-weight: 700; color: #636e72; transition: 0.3s; }
         .toggle-btn.active { background: var(--white); color: #764ba2; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .leaderboard-item { display: flex; align-items: center; padding: 15px; background: var(--white); margin-bottom: 12px; border-radius: 18px; box-shadow: var(--card-shadow); }
         .rank-badge { width: 32px; height: 32px; background: #f1f2f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; margin-right: 12px; color: var(--text-main); }
-        .earning-wallet-card { background: #2D3436; color: #fff; padding: 25px; border-radius: 24px; box-shadow: var(--card-shadow); margin-bottom: 20px; }
+        
+        /* Watch TV Page Style */
+        .tv-screen {
+            background: #2D3436;
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        .tv-screen::before {
+            content: ''; position: absolute; top:0; left:0; right:0; height: 50%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.05), transparent);
+            pointer-events: none;
+        }
+        .tv-icon-large { font-size: 4rem; margin-bottom: 15px; color: var(--primary-color); text-shadow: 0 0 20px rgba(118, 75, 162, 0.5); }
     </style>
 </head>
 <body>
@@ -252,7 +269,7 @@
             <div class="wallet-card-overlay">
                 <div>
                     <div class="wallet-label">Total Balance</div>
-                    <div class="wallet-amount"><span id="user-balance">0.00</span> <span style="font-size:1rem; font-weight:600;">TK</span></div>
+                    <div class="wallet-amount"><span id="user-balance">0.0000</span> <span style="font-size:1rem; font-weight:600;">TK</span></div>
                 </div>
                 <div class="wallet-icon">
                     <i class="fas fa-wallet"></i>
@@ -297,34 +314,34 @@
                             <span class="chart-badge">Last 7 Days</span>
                         </div>
                         
-                        <div id="earnings-chart" class="chart-area">
-                            </div>
-                        
-                        <div id="earnings-chart-labels" class="chart-labels" style="display:flex; justify-content:space-between; margin-top:5px; padding:0 5px;">
-                            </div>
+                        <div id="earnings-chart" class="chart-area"></div>
+                        <div id="earnings-chart-labels" class="chart-labels" style="display:flex; justify-content:space-between; margin-top:5px; padding:0 5px;"></div>
                     </div>
 
                 </div>
             </div>
 
-            <div id="tasks-page" class="page">
+            <div id="watch-page" class="page">
                 <div class="dashboard-content" style="margin-top: 10px;">
-                    <div class="earning-wallet-card">
-                        <h3 style="color: #dfe6e9; font-size: 0.9rem;">Pending Balance</h3>
-                        <p style="font-size: 2.2rem; font-weight: 700; margin: 5px 0 15px;">
-                            <span id="earning-wallet-balance">0.000</span> <span style="font-size: 1rem;">TK</span>
-                        </p>
-                        <div style="font-size: 0.8rem; opacity: 0.7; margin-bottom: 20px;">Collect 10 TK to add to main balance.</div>
-                        <button id="move-to-balance-btn" class="action-btn" style="width:100%; background: #fff; color: #2D3436;" disabled>Add to Main Balance</button>
+                    <div class="tv-screen">
+                        <i class="fas fa-tv tv-icon-large"></i>
+                        <h2 style="margin-bottom: 5px;">Watch & Earn</h2>
+                        <p style="font-size: 0.9rem; opacity: 0.7;">Watch video ads and get paid instantly!</p>
                     </div>
 
                     <div id="ad-progress-container" style="margin-bottom: 20px;"></div>
                     
-                    <h2 style="font-size:1.1rem; margin: 25px 0 15px;">Daily Task</h2>
-                    <div id="ad-task-container"></div>
+                    <div id="ad-task-container">
+                        </div>
+                </div>
+            </div>
 
-                    <h2 style="font-size:1.1rem; margin: 25px 0 15px;">Bonus Tasks</h2>
+            <div id="tasks-page" class="page">
+                <div class="dashboard-content" style="margin-top: 10px;">
+                    
+                    <h2 style="font-size:1.1rem; margin: 10px 0 15px;">Available Tasks</h2>
                     <div id="dynamic-tasks-container"></div>
+                    <div id="no-tasks-msg" style="display:none; text-align:center; color:#b2bec3; padding:20px;">No extra tasks available right now.</div>
                 </div>
             </div>
 
@@ -362,7 +379,8 @@
 
         <nav class="bottom-nav">
             <button class="nav-btn active" data-page="home-page"><i class="fas fa-home"></i><span>Home</span></button>
-            <button class="nav-btn" data-page="tasks-page"><i class="fas fa-wallet"></i><span>Tasks</span></button>
+            <button class="nav-btn tv-btn" data-page="watch-page"><i class="fas fa-tv"></i><span>Watch</span></button>
+            <button class="nav-btn" data-page="tasks-page"><i class="fas fa-clipboard-list"></i><span>Tasks</span></button>
             <button class="nav-btn" data-page="leaderboard-page"><i class="fas fa-trophy"></i><span>Top</span></button>
             <button class="nav-btn" data-page="profile-page"><i class="fas fa-user-circle"></i><span>Profile</span></button>
         </nav>
@@ -374,7 +392,6 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
     <script>
-    // --- EXACT LOGIC PRESERVED TO KEEP DATA & ADMIN PANEL SAFE ---
     document.addEventListener('DOMContentLoaded', () => {
         const tg = window.Telegram.WebApp;
         
@@ -392,7 +409,6 @@
         let appConfig = {}; 
         let userState = {}; 
         let tgUser = {}; 
-        let earningWalletBalance = 0;
         let leaderboardData = { referral: [], earning: [] };
         let userTransactions = [];
         let historyCache = { pending: [], completed: [], rejected: [] };
@@ -424,13 +440,12 @@
             
             tgUser = tg.initDataUnsafe.user || { 
                 id: 123456789, 
-                first_name: "Orange", 
+                first_name: "Demo", 
                 last_name: "User", 
-                username: "orangeuser",
+                username: "demouser",
                 photo_url: null 
             };
 
-            // Using new theme color
             tg.setHeaderColor('#667eea'); 
             tg.setBackgroundColor('#F4F7FE');
 
@@ -442,11 +457,8 @@
                 appConfig = configSnapshot.val() || {};
 
                 await loadUserData(db);
-                recoverPendingBalance(db);
                 setupRealtimeUserSync(db);
-
                 await Promise.all([ loadLeaderboards(db) ]);
-
                 setupRealtimeHistory(db);
 
                 if(appConfig.adZoneId) loadAdSdk(appConfig.adZoneId);
@@ -476,26 +488,12 @@
 
             } catch (error) { 
                 console.error("Init Error:", error); 
-                recoverPendingBalance(null); 
                 document.getElementById('app-loader').innerHTML = `<p style="color:red; text-align:center; padding:20px;">Connection Issue.<br>Loaded from backup.</p>`;
                 setTimeout(() => {
                     document.getElementById('app-loader').style.display = 'none';
                     document.getElementById('app').style.display = 'block';
                     renderUI();
                 }, 2000);
-            }
-        };
-
-        const recoverPendingBalance = (db) => {
-            const storageKey = `pendingBalance_${tgUser.id}`;
-            const localBalance = parseFloat(localStorage.getItem(storageKey) || 0);
-            const serverBalance = parseFloat(userState.pendingBalance || 0);
-            if (localBalance > serverBalance) {
-                earningWalletBalance = localBalance;
-                if (db) db.ref(`users/${tgUser.id}/pendingBalance`).set(localBalance);
-            } else {
-                earningWalletBalance = serverBalance;
-                localStorage.setItem(storageKey, serverBalance);
             }
         };
 
@@ -510,7 +508,7 @@
             if (!userData) {
                 const startParam = tg.initDataUnsafe.start_param;
                 const referralId = (startParam && startParam != tgUser.id) ? startParam : null;
-                userData = { id: tgUser.id, firstName: safeFirstName, photoUrl: photoUrl, balance: 0, pendingBalance: 0, referrals: 0, referredBy: referralId, totalEarned: 0, lifetimeAdCount: 0, lastAdWatchDate: today, dailyAdCount: 0, breakUntil: 0, completedTasks: {}, welcomed: false };
+                userData = { id: tgUser.id, firstName: safeFirstName, photoUrl: photoUrl, balance: 0, referrals: 0, referredBy: referralId, totalEarned: 0, lifetimeAdCount: 0, lastAdWatchDate: today, dailyAdCount: 0, breakUntil: 0, completedTasks: {}, welcomed: false };
                 await userRef.set(userData);
                 if (referralId) {
                     const referrerRef = db.ref(`users/${referralId}`);
@@ -530,7 +528,6 @@
                 if (!userData.firstName) { userData.firstName = safeFirstName; updates.firstName = safeFirstName; needsUpdate = true; }
                 if(userData.photoUrl !== photoUrl) { userData.photoUrl = photoUrl; updates.photoUrl = photoUrl; needsUpdate = true; }
                 if (userData.lastAdWatchDate !== today) { updates.dailyAdCount = 0; updates.lastAdWatchDate = today; userData.dailyAdCount = 0; userData.lastAdWatchDate = today; needsUpdate = true; }
-                if (userData.pendingBalance === undefined) { userData.pendingBalance = 0; updates.pendingBalance = 0; needsUpdate = true; }
                 if(needsUpdate) await userRef.update(updates);
             }
             userState = userData;
@@ -578,7 +575,8 @@
             if (!displayFirstName || displayFirstName === 'undefined') displayFirstName = tgUser.first_name || 'User';
 
             document.getElementById('user-name').textContent = displayFirstName;
-            document.getElementById('user-balance').textContent = (userState.balance || 0).toFixed(2);
+            document.getElementById('user-balance').textContent = (userState.balance || 0).toFixed(4);
+            
             document.getElementById('daily-ads-watched').textContent = `${userState.dailyAdCount || 0} / ${appConfig.dailyAdLimit || 0}`;
             
             const refCount = userState.referrals || 0;
@@ -589,11 +587,13 @@
             document.getElementById('total-ads-watched').textContent = userState.lifetimeAdCount || 0;
             document.getElementById('total-earned').textContent = (userState.totalEarned || 0).toFixed(2);
             
-            const pendingBalEl = document.getElementById('earning-wallet-balance');
-            if(pendingBalEl) pendingBalEl.textContent = earningWalletBalance.toFixed(4);
-            document.getElementById('move-to-balance-btn').disabled = earningWalletBalance < 10;
-            
-            renderAdTask(); renderAdProgress(); renderDynamicTasks(); renderReferralSection(); renderWithdrawSection(); renderEarningsGraph(); renderLeaderboard(); 
+            renderAdTask(); 
+            renderAdProgress(); 
+            renderDynamicTasks(); 
+            renderReferralSection(); 
+            renderWithdrawSection(); 
+            renderEarningsGraph(); 
+            renderLeaderboard(); 
         };
         
         const renderAdProgress = () => {
@@ -603,7 +603,7 @@
             const percentage = Math.min((watchedCount / dailyLimit) * 100, 100);
             container.innerHTML = `
                 <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:5px;">
-                    <span style="font-weight:700; color:var(--text-sub);">Progress</span>
+                    <span style="font-weight:700; color:var(--text-sub);">Daily Goal</span>
                     <span style="font-weight:700; color:var(--text-main);">${Math.round(percentage)}%</span>
                 </div>
                 <div style="width:100%; height:10px; background:#dfe6e9; border-radius:10px; overflow:hidden;">
@@ -633,7 +633,6 @@
             data.forEach((val, i) => {
                 const height = (val / maxVal) * 100;
                 const dateLabel = new Date(dates[i]).toLocaleDateString('en-US', { weekday: 'narrow' });
-                // MODIFIED: Using new class 'pro-bar' and wrapper for better alignment
                 chartEl.innerHTML += `
                 <div class="chart-bar-wrapper">
                     <div class="pro-bar" style="height: ${height}%;"></div>
@@ -642,36 +641,72 @@
             });
         };
 
+        // --- FIXED AD TASK RENDER WITH LIVE TIMER ---
         const renderAdTask = () => {
             const container = document.getElementById('ad-task-container');
             const now = Date.now();
-            const onBreak = userState.breakUntil && now < userState.breakUntil;
+            const breakTime = parseInt(userState.breakUntil || 0);
+            const onBreak = breakTime > now;
             const limitReached = userState.dailyAdCount >= appConfig.dailyAdLimit;
             
-            let content = ''; let btnState = ''; let icon = 'fa-play';
-            if (onBreak) {
-                const mins = Math.ceil((userState.breakUntil - now) / 60000);
-                content = `Wait ${mins} min`; btnState = 'disabled'; icon = 'fa-clock';
-            } else if (limitReached) {
-                content = `Limit Reached`; btnState = 'disabled'; icon = 'fa-check-circle';
-            } else {
-                content = `Watch Ad (+${appConfig.adValue || 0} TK)`; icon = 'fa-play';
-            }
+            if (window.adBreakTimer) clearInterval(window.adBreakTimer);
 
-            container.innerHTML = `
-                <div class="task-container">
-                    <div style="width:45px; height:45px; background: rgba(118, 75, 162, 0.1); border-radius:12px; display:flex; align-items:center; justify-content:center;">
-                        <i class="fas ${icon}" style="font-size:1.2rem; color:var(--primary-color);"></i>
+            if (onBreak) {
+                // UI for Break Time with Timer ID
+                container.innerHTML = `
+                    <div style="text-align: center;">
+                        <button id="watch-ad-btn" class="action-btn" style="width: 100%; padding: 16px; font-size: 1.1rem; background: #636e72; color: #fff; opacity: 0.8; cursor: not-allowed;" disabled>
+                            <i class="fas fa-clock"></i> <span id="timer-text">Loading...</span>
+                        </button>
+                        <p style="margin-top: 10px; font-size: 0.85rem; color: #e17055; font-weight: 700;">
+                            Break Time Active
+                        </p>
                     </div>
-                    <div class="task-info">
-                        <h3>Watch & Earn</h3>
-                        <p>${limitReached ? 'Come back tomorrow' : 'Watch video ads to earn money'}</p>
+                `;
+
+                const updateTimer = () => {
+                    const currentTime = Date.now();
+                    const diff = breakTime - currentTime;
+                    
+                    if (diff <= 0) {
+                        clearInterval(window.adBreakTimer);
+                        renderAdTask(); 
+                        return;
+                    }
+
+                    const m = Math.floor(diff / 60000);
+                    const s = Math.floor((diff % 60000) / 1000);
+                    const textEl = document.getElementById('timer-text');
+                    if(textEl) textEl.textContent = `Wait ${m}m ${s}s`;
+                };
+
+                updateTimer();
+                window.adBreakTimer = setInterval(updateTimer, 1000);
+
+            } else if (limitReached) {
+                container.innerHTML = `
+                    <div style="text-align: center;">
+                        <button class="action-btn" style="width: 100%; padding: 16px; font-size: 1.1rem; background: #dfe6e9; color: #636e72;" disabled>
+                            <i class="fas fa-check-circle"></i> Daily Limit Reached
+                        </button>
+                        <p style="margin-top: 10px; font-size: 0.8rem; color: var(--text-sub);">
+                            Come back tomorrow for more ads!
+                        </p>
                     </div>
-                    <button id="watch-ad-btn" class="action-btn" ${btnState}>${limitReached ? 'Done' : 'Watch'}</button>
-                </div>
-            `;
-            const btn = document.getElementById('watch-ad-btn');
-            if(btn && !btn.disabled) btn.onclick = handleWatchAd;
+                `;
+            } else {
+                container.innerHTML = `
+                    <div style="text-align: center;">
+                        <button id="watch-ad-btn" class="action-btn" style="width: 100%; padding: 16px; font-size: 1.1rem;">
+                            <i class="fas fa-play-circle" style="margin-right: 5px;"></i> Watch Ad (+${appConfig.adValue || 0} TK)
+                        </button>
+                        <p style="margin-top: 10px; font-size: 0.8rem; color: var(--text-sub);">
+                            Click to watch ad and earn instantly.
+                        </p>
+                    </div>
+                `;
+                document.getElementById('watch-ad-btn').onclick = handleWatchAd;
+            }
         };
 
         const handleWatchAd = async () => {
@@ -689,59 +724,36 @@
 
                 const reward = parseFloat(appConfig.adValue || 0);
                 const today = new Date().toISOString().slice(0, 10);
-                earningWalletBalance = parseFloat((earningWalletBalance + reward).toFixed(4));
-                localStorage.setItem(`pendingBalance_${tgUser.id}`, earningWalletBalance);
-
-                const balanceEl = document.getElementById('earning-wallet-balance');
-                if(balanceEl) balanceEl.innerText = earningWalletBalance.toFixed(4);
                 
-                const moveBtn = document.getElementById('move-to-balance-btn');
-                if(moveBtn) moveBtn.disabled = earningWalletBalance < 10;
-
+                userState.balance = (userState.balance || 0) + reward;
                 userState.dailyAdCount = (userState.dailyAdCount || 0) + 1;
                 userState.lifetimeAdCount = (userState.lifetimeAdCount || 0) + 1;
                 userState.totalEarned = (userState.totalEarned || 0) + reward;
                 userState.lastAdWatchDate = today;
-                userState.pendingBalance = earningWalletBalance; 
-
-                const dailyLimit = appConfig.dailyAdLimit || 0;
-                const dailyCounterEl = document.getElementById('daily-ads-watched');
-                const totalCounterEl = document.getElementById('total-ads-watched');
-                if(dailyCounterEl) dailyCounterEl.textContent = `${userState.dailyAdCount} / ${dailyLimit}`;
-                if(totalCounterEl) totalCounterEl.textContent = userState.lifetimeAdCount;
 
                 if (userState.dailyAdCount % appConfig.adsPerBreak === 0 && appConfig.adsPerBreak > 0) {
                     userState.breakUntil = Date.now() + (appConfig.breakDuration * 60000);
                 }
 
-                const updates = { dailyAdCount: userState.dailyAdCount, lifetimeAdCount: userState.lifetimeAdCount, totalEarned: userState.totalEarned, breakUntil: userState.breakUntil || 0, lastAdWatchDate: today, pendingBalance: earningWalletBalance };
                 const db = firebase.database();
-                await db.ref(`users/${tgUser.id}`).update(updates);
+                
+                const userRef = db.ref(`users/${tgUser.id}`);
+                const updates = { 
+                    dailyAdCount: userState.dailyAdCount, 
+                    lifetimeAdCount: userState.lifetimeAdCount, 
+                    totalEarned: userState.totalEarned, 
+                    breakUntil: userState.breakUntil || 0, 
+                    lastAdWatchDate: today 
+                };
+                
+                await userRef.update(updates);
+                await db.ref(`users/${tgUser.id}/balance`).set(firebase.database.ServerValue.increment(reward));
                 await db.ref(`userEarnings/${tgUser.id}/${today}`).set(firebase.database.ServerValue.increment(reward));
 
                 tg.HapticFeedback.notificationOccurred('success');
-                showPopup(`<i class="fas fa-check-circle" style="font-size:3rem; color:#00b894; margin-bottom:10px;"></i><h3>+${reward} TK</h3><p>Added to pending balance</p><button class="action-btn" onclick="document.getElementById('popup').style.display='none'">Awesome</button>`);
+                showPopup(`<i class="fas fa-check-circle" style="font-size:3rem; color:#00b894; margin-bottom:10px;"></i><h3>+${reward} TK</h3><p>Added to Main Balance!</p><button class="action-btn" onclick="document.getElementById('popup').style.display='none'">Awesome</button>`);
                 renderUI();
             } catch (e) { closePopup(); console.error(e); tg.showAlert("Ad failed to load/complete."); }
-        };
-
-        const handleMoveToBalance = async () => {
-            const btn = document.getElementById('move-to-balance-btn');
-            btn.disabled = true; btn.innerText = "Processing...";
-            try {
-                const db = firebase.database();
-                const updates = {};
-                updates[`users/${tgUser.id}/balance`] = firebase.database.ServerValue.increment(earningWalletBalance);
-                updates[`users/${tgUser.id}/pendingBalance`] = 0;
-                await db.ref().update(updates);
-                userState.balance += earningWalletBalance;
-                earningWalletBalance = 0;
-                userState.pendingBalance = 0;
-                localStorage.removeItem(`pendingBalance_${tgUser.id}`);
-                tg.HapticFeedback.notificationOccurred('success');
-                tg.showAlert("Balance Transfer Successful!");
-            } catch(e) { tg.showAlert("Network Error"); console.error(e); }
-            renderUI();
         };
 
         const renderReferralSection = () => {
@@ -818,8 +830,10 @@
         const renderDynamicTasks = () => {
             const container = document.getElementById('dynamic-tasks-container');
             container.innerHTML = '';
+            let hasTasks = false;
             if (appConfig.tasks) {
                 Object.entries(appConfig.tasks).forEach(([key, task]) => {
+                    hasTasks = true;
                     const claimed = userState.completedTasks && userState.completedTasks[key];
                     const div = document.createElement('div');
                     div.className = 'task-container';
@@ -830,12 +844,14 @@
             }
             if (appConfig.links) {
                 Object.values(appConfig.links).forEach(link => {
+                    hasTasks = true;
                     const div = document.createElement('div');
                     div.className = 'task-container';
                     div.innerHTML = `<img class="task-icon-img" src="${link.icon || 'https://img.icons8.com/color/48/link.png'}"><div class="task-info"><h3>${link.name}</h3><p>Visit Link</p></div><button class="action-btn" onclick="window.Telegram.WebApp.openLink('${link.url}')">Visit</button>`;
                     container.appendChild(div);
                 });
             }
+            document.getElementById('no-tasks-msg').style.display = hasTasks ? 'none' : 'block';
         };
         
         const handleBonusTask = (key, task) => {
@@ -859,13 +875,16 @@
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
                     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-                    document.getElementById(btn.dataset.page).classList.add('active');
+                    
+                    const targetPage = btn.dataset.page;
+                    document.getElementById(targetPage).classList.add('active');
                     btn.classList.add('active');
-                    if(btn.dataset.page === 'leaderboard-page') {
+                    
+                    if(targetPage === 'leaderboard-page') {
                          document.getElementById('leaderboard-loader').style.display = 'block';
                          loadLeaderboards(firebase.database()).then(() => { document.getElementById('leaderboard-loader').style.display = 'none'; renderLeaderboard(); });
                     }
-                    if(btn.dataset.page === 'profile-page') renderWithdrawalHistory();
+                    if(targetPage === 'profile-page') renderWithdrawalHistory();
                 });
             });
         };
@@ -889,7 +908,6 @@
         
         const setupEventListeners = () => {
             document.querySelector('.leaderboard-toggle').addEventListener('click', e => { if(e.target.classList.contains('toggle-btn')) { document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active')); e.target.classList.add('active'); renderLeaderboard(); }});
-            document.getElementById('move-to-balance-btn').addEventListener('click', handleMoveToBalance);
             document.getElementById('popup').addEventListener('click', e => { if(e.target.id === 'popup') closePopup(); });
         };
 
